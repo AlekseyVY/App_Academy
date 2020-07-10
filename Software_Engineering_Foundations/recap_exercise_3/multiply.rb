@@ -5,8 +5,16 @@
 
 
 def multiply(a, b)
+    if a < 0 && b < 0
+       a = a.abs
+       b = b.abs
+    end
+    if b < 0 
+        b = b * -1
+        a = a * -1
+    end
     if b <= 1
-        return 1
+        return a
     end
 
     a += multiply(a, b - 1)
