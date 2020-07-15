@@ -27,14 +27,16 @@ class List
     end
 
     def valid_index?(index)
-        if @items[index]
+        if @items[index.to_i]
             return true
         else 
             return false
         end
     end
 
-    def swap(index_1, index_2)
+    def swap(idx_1, idx_2)
+        index_1 = idx_1.to_i
+        index_2 = idx_2.to_i
         if valid_index?(index_1) && valid_index?(index_2)
             @items[index_1], @items[index_2] = @items[index_2], @items[index_1]
             return true
@@ -45,7 +47,7 @@ class List
 
     def [](index)
         if valid_index?(index)
-            return @items[index]
+            return @items[index.to_i]
         else
             return nil
         end
@@ -70,8 +72,8 @@ class List
     def print_full_item(index)
         if valid_index?(index)
             p '-----------------------------------'
-            p @items[index].title + " - " + @items[index].deadline
-            p @items[index].description
+            p @items[index.to_i].title + " - " + @items[index.to_i].deadline
+            p @items[index.to_i].description
             p '-----------------------------------'
         end
     end
@@ -83,7 +85,9 @@ class List
         p '-----------------------------------'
     end
 
-    def up(index, amount=1)
+    def up(i, a=1)
+        amount = a.to_i
+        index = i.to_i
         if valid_index?(index)
             item = @items[index]
             idx = index
@@ -98,11 +102,13 @@ class List
         end
     end
 
-    def down(index, amount=1)
+    def down(i, a=1)
+        amount = a.to_i
+        index = i.to_i
         if valid_index?(index)
             item = @items[index]
             idx = index
-            while amount > 0 && valid_index?(idx + 1)
+            while amount.to_i > 0 && valid_index?(idx + 1)
                 idx = @items.index(item)
                 if @items[@items.length - 1] == item
                     return true
@@ -112,18 +118,8 @@ class List
             end
         end
     end
+
+    def sort
+        @items.sort_by! {|obj| obj.deadline}
+    end
 end
-
-
-
-# my_list = List.new('Groceries')
-
-
-# my_list.add_item('candy', '2019-10-31', '4 bags should be enough')
-# my_list.add_item('cheese', '2019-10-25', 'Get American and Feta for good measure.')
-# my_list.add_item('toothpaste', '2019-10-25')
-# my_list.add_item('shampoo', '2019-10-24')
-
-# my_list.print
-# my_list.down(1, 654)
-# my_list.print
