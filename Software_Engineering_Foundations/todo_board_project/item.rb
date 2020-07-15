@@ -1,5 +1,5 @@
 class Item
-    attr_reader :title, :deadline, :description
+    attr_reader :title, :deadline, :description, :done
 
     def initialize(title, deadline, description)
         @title = title
@@ -9,6 +9,7 @@ class Item
             raise 'Date is Invalid format!'
         end
         @description = description
+        @done = false
     end
 
     def self.valid_date?(date_string)
@@ -46,5 +47,13 @@ class Item
 
     def description=(new_description)
         @description = new_description
+    end
+
+    def toggle 
+        if @done == false
+            @done = true
+        else
+            @done = false
+        end
     end
 end

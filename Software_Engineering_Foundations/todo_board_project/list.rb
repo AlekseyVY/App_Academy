@@ -61,10 +61,10 @@ class List
         p '-----------------------------------'
         p ' '.ljust(13) + @label + " ".ljust(13)
         p '-----------------------------------'
-        p 'Idx | Item             | Deadline  '
+        p 'Idx | Item      | Deadline | Done  '
         p '-----------------------------------'
         @items.each_with_index do |ele, idx|
-            p idx.to_s.ljust(3) + " | " + ele.title.ljust(16) + " | " + ele.deadline
+            p idx.to_s.ljust(3) + " | " + ele.title.ljust(8) + " | " + ele.deadline + " | " + ele.done.to_s
         end
         p '-----------------------------------'
     end
@@ -74,6 +74,7 @@ class List
             p '-----------------------------------'
             p @items[index.to_i].title + " - " + @items[index.to_i].deadline
             p @items[index.to_i].description
+            p @items[index.to_i].done
             p '-----------------------------------'
         end
     end
@@ -82,6 +83,7 @@ class List
         p '-----------------------------------'
         p @items[0].title + " - " + @items[0].deadline
         p @items[0].description
+        p @items[index.to_i].done
         p '-----------------------------------'
     end
 
@@ -121,5 +123,31 @@ class List
 
     def sort
         @items.sort_by! {|obj| obj.deadline}
+    end
+
+    def toggle_item(idx)
+        index = idx.to_i
+        if valid_index?(index)
+            @items[index].toggle
+        end
+    end
+
+    def remove_item(idx)
+        index = idx.to_i
+        if valid_index?(index)
+            @items.slice!(index)
+            return true
+        else
+            return false
+        end
+    end
+
+    def purge
+        @items.each_with_index do |item, idx|
+            if item.done
+                index = @items.index(item)
+                @items.slice!(index)
+            end
+        end
     end
 end
