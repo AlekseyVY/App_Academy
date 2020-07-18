@@ -6,6 +6,8 @@ class Game
         @fragment = ''
         @players = []
         args.each { |name| @players << Player.new(name)}
+        @track = Hash.new
+        @players.each { |player| @track[player] = 0 }
         @current_player = @players[0]
         @previous_player = nil
         read_file = File.open('dictionary.txt')
@@ -14,6 +16,7 @@ class Game
             @dictionary[word.chomp] += 1
         end
         read_file.close
+        @word_dict = {}
     end
 
     def current_player
@@ -36,28 +39,58 @@ class Game
 
     def valid_play?(string)
         alphabet = ("a".."z").to_a
-        if alphabet.include?(string)
+        if @fragment == '' && alphabet.include?(string)
+            @fragment = string
+            @word_dict = @dictionary.select { |word, v| word[0] == string} 
             return true
-        else
-            return false
+        else @word_dict.include?(string)
+            @fragment += string
+            @word_dict = @word_dict.select { |word| word.include?(@fragment)}
         end
     end
 
     def play_round
-        if @dictionary.include?(@fragment)
-            p @previous_player + ' LOSE'
-        end
+        looses
+        p current_player.name
         char = current_player.guess
-        if valid_play?(char)
-            @fragment += char
-        else
+        if !valid_play?(char)
             @current_player.alert_invalid_guess
         end
         next_player!
+    end
+
+    def looses 
+        if @word_dict.has_key?(@fragment)
+            p 'LOSE'
+            @track[@current_player] += 1
+            @fragment = ''
+            @word_dict = {}
+        end
+        if record(@current_player)
+            p @current_player.name
+            p "GHOST"
+            return true
+        end
+    end
+
+    def record(player)
+        times = @track[player] 
+        if times == 5
+            return true
+        else 
+            return false
+        end
+    end
+
+    def run
+        while looses != true
+            play_round
+            p @fragment
+        end
     end
 end
 
 
 
 f = Game.new('aleksey', 'Kirill')
-f.play_round
+f.run
