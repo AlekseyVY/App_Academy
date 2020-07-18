@@ -69,6 +69,8 @@ class Game
         if record(@current_player)
             p @current_player.name
             p "GHOST"
+            tmp = @players.index(@current_player)
+            @players.slice!(tmp)
             return true
         end
     end
@@ -83,14 +85,13 @@ class Game
     end
 
     def run
-        while looses != true
+        while @players.length != 1
             play_round
-            p @fragment
         end
     end
 end
 
 
 
-f = Game.new('aleksey', 'Kirill')
+f = Game.new('aleksey', 'Kirill', 'Andrey')
 f.run
