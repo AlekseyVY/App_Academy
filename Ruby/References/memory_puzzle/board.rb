@@ -1,7 +1,7 @@
 require_relative './card.rb'
 
 class Board
-    attr_reader :board_size
+    attr_reader :board_size, :grid
     def initialize(board_size)
         @board_size = board_size
         @grid = Array.new(@board_size) {Array.new(@board_size)}
