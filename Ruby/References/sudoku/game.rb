@@ -2,7 +2,7 @@ require_relative './board.rb'
 
 class Game
     def initialize
-        @board = Board.new('./puzzles/sudoku2.txt')
+        @board = Board.new('./puzzles/sudoku1.txt')
     end
 
     def run
