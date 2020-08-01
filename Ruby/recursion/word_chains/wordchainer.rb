@@ -22,5 +22,5 @@ end
 
 
 
-# w = WordChainer.new("dict.txt")
-# p w.adjacent_words('cats')
+w = WordChainer.new("dict.txt")
+p w.adjacent_words('cats')
