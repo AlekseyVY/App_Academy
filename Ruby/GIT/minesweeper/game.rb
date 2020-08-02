@@ -6,6 +6,6 @@ require_relative 'user'
 
 class Game
     def initialize(board_size, user_name)
-
+        
     end
 end
