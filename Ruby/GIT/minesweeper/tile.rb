@@ -8,6 +8,10 @@ class Tile
         @flagged = false
     end
 
+    def val(val)
+        @value = val
+    end
+
     def flip
         @flipped = true
     end
