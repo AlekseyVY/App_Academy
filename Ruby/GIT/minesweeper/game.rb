@@ -37,6 +37,5 @@ class Game
 end
 
 
-# testing game
 g = Game.new(9, 'Aleksey')
 g.play
