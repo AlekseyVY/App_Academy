@@ -37,5 +37,5 @@ class Game
 end
 
 
-g = Game.new(9, 'Aleksey')
-g.play
+# g = Game.new(9, 'Aleksey')
+# g.play
