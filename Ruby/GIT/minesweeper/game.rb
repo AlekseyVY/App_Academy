@@ -24,18 +24,18 @@ class Game
     end
 
     def action_performer(action, input)
-        if action == 'flag'
+        if action == 'f'
             @board.flag(input)
-        elsif action == 'open'
+        elsif action == 'o'
             if !@board.check_open(input)
                 win_loose
             end
-        elsif action == 'unflag'
+        elsif action == 'u'
             @board.unflag(input)
         end
     end
 end
 
 
-# g = Game.new(9, 'Aleksey')
-# g.play
+g = Game.new(3, 'Aleksey')
+g.play

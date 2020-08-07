@@ -8,6 +8,7 @@ class Tile
         @flagged = false
     end
 
+
     def val(val)
         @value = val
     end
@@ -26,7 +27,7 @@ class Tile
         elsif @flipped
             return @value
         else
-            return 'X'
+            return '*'
         end
     end
 end

@@ -8,11 +8,12 @@ class Board
         @size_of_grid = size
         @grid = Array.new(size) {Array.new(size) {Tile.new(' ')}}
         populate_bombs
+        neibor_mines
     end
 
     def populate_bombs
         hash = Hash.new {|h,k| h[k] = Array.new }
-        bombs = rand(1..((@size_of_grid - 1) * (@size_of_grid - 1)))
+        bombs = rand(1..(((@size_of_grid - 1) * (@size_of_grid - 1)) / 2 ))
         bombs.times do |bomb|
             hash[bomb] << rand(1..(@size_of_grid - 1))
             hash[bomb] << rand(1..(@size_of_grid - 1))
@@ -53,6 +54,39 @@ class Board
         else
             p ' BUUUUUUUMMMM BAAAAMMM BADAAAAAABUUUMMM. YOU DEAD!!! '
             return false
+        end
+    end
+
+    def neibor_mines
+        @grid.each_with_index do |ele_1, idx_1|
+            tmp = 0
+            ele_1.each_with_index do |ele_2, idx_2|
+                if @grid[idx_1 - 1][idx_2 - 1] != nil && @grid[idx_1 - 1][idx_2 - 1] == 'B'
+                    val += 1
+                elsif
+                    @grid[idx_1 - 1][idx_2] != nil && @grid[idx_1 - 1][idx_2] == 'B'
+                    val += 1
+                elsif
+                    @grid[idx_1 - 1][idx_2 + 1] != nil && @grid[idx_1 - 1][idx_2 + 1] == 'B'
+                    val += 1
+                elsif
+                    @grid[idx_1][idx_2 - 1] != nil && @grid[idx_1][idx_2 - 1] == 'B'
+                    val += 1
+                elsif
+                    @grid[idx_1][idx_2 + 1] != nil &&  @grid[idx_1][idx_2 + 1] == 'B'
+                    val += 1
+                elsif
+                    @grid[idx_1 + 1][idx_2 - 1] != nil && @grid[idx_1 + 1][idx_2 - 1] == 'B'
+                    val += 1
+                elsif
+                    @grid[idx_1 + 1][idx_2] != nil && @grid[idx_1 + 1][idx_2] == 'B'
+                    val += 1
+                elsif
+                    @grid[idx_1 + 1][idx_2 + 1] != nil &&  @grid[idx_1 + 1][idx_2 + 1] == 'B'
+                    val += 1
+                end
+                ele_2.val(tmp)
+            end
         end
     end
 end

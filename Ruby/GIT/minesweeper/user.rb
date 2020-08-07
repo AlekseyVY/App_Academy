@@ -15,7 +15,7 @@ class User
 
     def action
         print @name
-        print '  Plese specify action you want to perform (open, flag, unflag): '
+        print '  Plese specify action you want to perform (open - o, flag - f, unflag - u): '
         data = gets.chomp
     end
 end
