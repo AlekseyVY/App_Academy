@@ -9,7 +9,7 @@ function Piece (color) {
  * Returns the color opposite the current piece.
  */
 Piece.prototype.oppColor = function () {
-    return this.flipedColor = 'black'
+    return this.oppColor = 'black'
 };
 
 /**
