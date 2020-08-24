@@ -8,7 +8,7 @@ class Board
         @size_of_grid = size
         @grid = Array.new(size) {Array.new(size) {Tile.new(' ')}}
         populate_bombs
-        neibor_mines
+        # neibor_mines
     end
 
     def populate_bombs
