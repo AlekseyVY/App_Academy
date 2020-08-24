@@ -1,0 +1,11 @@
+
+
+
+Create 3 stacks (left, middle, right)
+left stack holds initial rings
+middle stack are helper for moving
+right stack is goal stack 
+you can take only top disk one at a time
+move it on any stack
+each player have one move
+game won when all disks are on right stack in right order
