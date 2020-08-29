@@ -7,7 +7,7 @@ class GameView {
         this.ctx = ctx
     }
 }
-
+// this function starts the ball rolling
 GameView.prototype.start = function(){
     setInterval(() => {
         this.Game.draw(this.ctx)

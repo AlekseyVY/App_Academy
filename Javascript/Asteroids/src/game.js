@@ -30,5 +30,9 @@ Game.prototype.moveObjects = function(){
         asteroid.move()
     })
 }
+// make this function great again
+Game.prototype.wrap = function(pos){
+    
+}
 
 module.exports = Game;
