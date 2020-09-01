@@ -36,3 +36,4 @@ Game.prototype.wrap = function(pos){
 }
 
 module.exports = Game;
+//fix
