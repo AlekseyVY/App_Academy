@@ -21,28 +21,28 @@ View.prototype.exercise0 = function () {
 View.prototype.exercise1 = function () {
   //Challenge: Give every square the class 'orange'
   //Result: Every square should turn orange (we already have a CSS rule)
-
+  $('li').addClass('orange')
   //your code here!
 };
 
 View.prototype.exercise2 = function () {
   //Challenge: Remove every square
   //Result: Every square vanishes
-
+  $('li').removeClass('square')
   //your code here!
 };
 
 View.prototype.exercise3 = function () {
   //Challenge: Add an <h1> with the text 'i love jquery' under the grid.
   //Result: An <h1> with the text 'i love jquery' appears under the grid.
-
+  $('#easel').after('<h1>i love jquery</h1>')
   //your code here!
 };
 
 View.prototype.exercise4 = function () {
   //Challenge: Write your first name in every other square.
   //Result: Your name appears in every other square.
-
+  $('.square').after('<p>Aleksey</p>')
   //your code here!
 };
 
@@ -50,7 +50,9 @@ View.prototype.exercise5 = function () {
   //Challenge: Alert the row and column of the square, when the square is clicked.
   //Result: When a square is clicked, the row and column appear in an alert. for
   //example: clicking the top left square should alert '0, 0'.
-
+  $('ul li').click(function(event) {
+    alert($(this).attr('data-pos'))
+  })
   //hint: checkout the addRow function at the bottom of the file: we set the
   //  'data-pos' of every square
 
@@ -63,7 +65,10 @@ View.prototype.exercise6 = function () {
   //should become a beautiful rainbow of colors.
 
   //hint: use window._randomColorString() (defined at top) to get a random color!
-
+  $('li').each(function(idx, elem) {
+    $(elem).css("background-color", window._randomColorString())
+    
+  })
   //your code here!
 };
 
@@ -73,7 +78,9 @@ View.prototype.exercise7 = function(){
   //console. The color won't be the color's name, but its rbg value.
   //You should push the button for exercise 6 first to try it on the
   //rainbow.
-
+  $('ul li').mousemove(function(event){
+    console.log($(this).attr('style'))
+  })
   //your code here!
 };
 
