@@ -1,0 +1,17 @@
+h1 {
+    color: red;
+}
+
+
+ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    width: 600px;
+}
+
+li {
+    width: 32%;
+    height: 200px;
+    border: solid black;
+}
