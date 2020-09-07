@@ -23,7 +23,7 @@ class View {
     render() {}
     moveTower() {}
 }
-
+// fix this shit
 
 View.prototype.render = function(){
     $('.hanoiContainer').empty()
