@@ -3,6 +3,9 @@ class View {
         this.HanoiGame = HanoiGame
         self.HanoiGame = this.HanoiGame
         this.$el = $el
+        this.setupTowers.bind(this)
+        this.render.bind(this)
+        this.moveTower.bind(this)
         this.setupTowers()
         this.moveTower()
     }
@@ -27,8 +30,8 @@ class View {
 
 View.prototype.render = function(){
     $('.hanoiContainer').empty()
-    console.log(View.prototype)
-    View.prototype.setupTowers()
+    console.log(this)
+    setupTowers()
 }
 
 View.prototype.moveTower = function(){
