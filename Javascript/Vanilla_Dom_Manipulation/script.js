@@ -30,7 +30,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   // adding new photos
-
+  document.getElementById('photo-form').onclick = function changeContent(event) {
+    let val = document.getElementById("photo-form-container").className = "photo-form-container";
+    if (val === 'photo-form-container hidden'){
+      val.className = "photo-form-container"
+    } else {
+      val.className = "photo-form-container hidden"
+    }
+    document.getElementById('photo-submit').onclick = function changeContent(event){
+      event.preventDefault()
+      let value = document.getElementById('submit-img').value
+      document.getElementById('submit-img').value = ''
+      let taskList = document.getElementById('photos')
+      let newLI = document.createElement('li');
+      let img = document.createElement('img');
+      img.src = value;
+      newLI.appendChild(img);
+      taskList.appendChild(newLI);
+    }
+  }
   // --- your code here!
 
 
