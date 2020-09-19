@@ -11,3 +11,6 @@ class Store {
         return Object.assign({}, this.state)
     }
 }
+
+
+export { Store }
